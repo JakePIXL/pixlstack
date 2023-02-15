@@ -1,5 +1,5 @@
 import type { Actions } from './$types';
-import { TURNSTILE_TOKEN } from '$env/static/private';
+// import { TURNSTILE_TOKEN } from '$env/static/private';
  
 export const actions = {
   default: async (event) => {
@@ -24,7 +24,7 @@ export const actions = {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
-        secret: TURNSTILE_TOKEN,
+        secret: import.meta.env.TURNSTILE_TOKEN,
         response: user_turnstile_token,
         remoteip: ip
       })
