@@ -1,0 +1,396 @@
+{
+  "db": "PostgreSQL",
+  "05c1e835f0972015b880133e5729320c32415b293cc2ba91a9c73a602a5c39e8": {
+    "describe": {
+      "columns": [
+        {
+          "name": "id",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        },
+        {
+          "name": "title",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "slug",
+          "ordinal": 2,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "excerpt",
+          "ordinal": 3,
+          "type_info": "Text"
+        },
+        {
+          "name": "content",
+          "ordinal": 4,
+          "type_info": "Text"
+        },
+        {
+          "name": "category_id",
+          "ordinal": 5,
+          "type_info": "Uuid"
+        },
+        {
+          "name": "is_published",
+          "ordinal": 6,
+          "type_info": "Bool"
+        },
+        {
+          "name": "created_at",
+          "ordinal": 7,
+          "type_info": "Timestamptz"
+        },
+        {
+          "name": "updated_at",
+          "ordinal": 8,
+          "type_info": "Timestamptz"
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT * FROM articles WHERE slug = $1"
+  },
+  "1bc0ea1ddb93e7269e5921cf17a019b8f671490fb674c0c8a9ec283713c356f0": {
+    "describe": {
+      "columns": [
+        {
+          "name": "id",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        },
+        {
+          "name": "name",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "slug",
+          "ordinal": 2,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "\n        SELECT * FROM categories\n        WHERE slug = $1\n        "
+  },
+  "4b315a1bb67a976918765aec6f51f2a79fe01898d9db88b0b283e7131197406b": {
+    "describe": {
+      "columns": [
+        {
+          "name": "id",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        },
+        {
+          "name": "title",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "slug",
+          "ordinal": 2,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "excerpt",
+          "ordinal": 3,
+          "type_info": "Text"
+        },
+        {
+          "name": "content",
+          "ordinal": 4,
+          "type_info": "Text"
+        },
+        {
+          "name": "category_id",
+          "ordinal": 5,
+          "type_info": "Uuid"
+        },
+        {
+          "name": "is_published",
+          "ordinal": 6,
+          "type_info": "Bool"
+        },
+        {
+          "name": "created_at",
+          "ordinal": 7,
+          "type_info": "Timestamptz"
+        },
+        {
+          "name": "updated_at",
+          "ordinal": 8,
+          "type_info": "Timestamptz"
+        },
+        {
+          "name": "category_name",
+          "ordinal": 9,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "category_slug",
+          "ordinal": 10,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Int8",
+          "Int8"
+        ]
+      }
+    },
+    "query": "\n        SELECT articles.*, categories.name AS category_name, categories.slug AS category_slug\n        FROM articles\n        JOIN categories\n        ON articles.category_id = categories.id\n        ORDER BY articles.created_at DESC\n        LIMIT $1 OFFSET $2;\n        "
+  },
+  "4bf3a9e9f5a06d14080e41c017ae24a565a8c87fd04b702630dfd358c7f931ad": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Uuid"
+        ]
+      }
+    },
+    "query": "\n        INSERT INTO users (id, role, is_verified, is_active)\n        VALUES ($1, 'default', true, false)\n        "
+  },
+  "5f9ba5d2ab84930c2b9b806c233f111368aacfe4173f2ccb5c23611251179945": {
+    "describe": {
+      "columns": [
+        {
+          "name": "id",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        },
+        {
+          "name": "title",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "slug",
+          "ordinal": 2,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "excerpt",
+          "ordinal": 3,
+          "type_info": "Text"
+        },
+        {
+          "name": "content",
+          "ordinal": 4,
+          "type_info": "Text"
+        },
+        {
+          "name": "category_id",
+          "ordinal": 5,
+          "type_info": "Uuid"
+        },
+        {
+          "name": "is_published",
+          "ordinal": 6,
+          "type_info": "Bool"
+        },
+        {
+          "name": "created_at",
+          "ordinal": 7,
+          "type_info": "Timestamptz"
+        },
+        {
+          "name": "updated_at",
+          "ordinal": 8,
+          "type_info": "Timestamptz"
+        },
+        {
+          "name": "category_name",
+          "ordinal": 9,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "category_slug",
+          "ordinal": 10,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "\n        SELECT articles.*, categories.name AS category_name, categories.slug AS category_slug\n        FROM articles\n        JOIN categories\n        ON articles.category_id = categories.id\n        WHERE articles.slug = $1;\n        "
+  },
+  "705624778f0bb2809741f314c3bac4144e0ba9e34607fc0176613869dfab1bc4": {
+    "describe": {
+      "columns": [
+        {
+          "name": "count",
+          "ordinal": 0,
+          "type_info": "Int8"
+        }
+      ],
+      "nullable": [
+        null
+      ],
+      "parameters": {
+        "Left": []
+      }
+    },
+    "query": "SELECT COUNT(*) FROM articles;"
+  },
+  "acd8160c6de0b1fd751df11fd7140339d5276f1d6a077e8f90947b6a35454f58": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Uuid",
+          "Varchar",
+          "Varchar",
+          "Varchar",
+          "Text",
+          "Varchar",
+          "Timestamptz"
+        ]
+      }
+    },
+    "query": "\n        INSERT INTO contact_requests (id, name, company_name, email, message, urgency, created_at)\n        VALUES ($1, $2, $3, $4, $5, $6, $7)\n        "
+  },
+  "b1c8659e5d8848fbbdc80b9e04e87fa76b5e3b9cbba6dffd74ea8be0a59293b5": {
+    "describe": {
+      "columns": [
+        {
+          "name": "id",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        },
+        {
+          "name": "role",
+          "ordinal": 1,
+          "type_info": "Text"
+        },
+        {
+          "name": "is_verified",
+          "ordinal": 2,
+          "type_info": "Bool"
+        },
+        {
+          "name": "is_active",
+          "ordinal": 3,
+          "type_info": "Bool"
+        },
+        {
+          "name": "created_at",
+          "ordinal": 4,
+          "type_info": "Timestamptz"
+        },
+        {
+          "name": "updated_at",
+          "ordinal": 5,
+          "type_info": "Timestamptz"
+        }
+      ],
+      "nullable": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "parameters": {
+        "Left": [
+          "Uuid"
+        ]
+      }
+    },
+    "query": "\n        SELECT * FROM users WHERE id = $1\n        "
+  },
+  "bfe889666c98d5ee736ae6f5a97faa75eb5fc5aa713e1ac882b37cd493a6dbc4": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Uuid",
+          "Varchar",
+          "Varchar",
+          "Text",
+          "Text",
+          "Uuid",
+          "Bool",
+          "Timestamptz",
+          "Timestamptz"
+        ]
+      }
+    },
+    "query": "\n        INSERT INTO articles (id, title, slug, excerpt, content, category_id, is_published, created_at, updated_at)\n        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)\n        "
+  },
+  "d9a4b9222fdc1ab658b3349f42171d7d850319cfa507ad0d3b68e08837b4d3dc": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Uuid",
+          "Varchar",
+          "Varchar"
+        ]
+      }
+    },
+    "query": "\n        INSERT INTO categories (id, name, slug)\n        VALUES ($1, $2, $3)\n        "
+  }
+}
